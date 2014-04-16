@@ -9,7 +9,7 @@ class myCMS{
 	public function display_public(){
 		$q = "SELECT * FROM cmsdb ORDER BY created DESC LIMIT 3";
 		$r = mysql_query($q);
-		
+		$entry_display = "";
 		if ( $r !== false && mysql_num_rows($r) > 0 ) {
 			while ( $a = mysql_fetch_assoc($r) ) {
 				$title = stripslashes($a['titel']);
@@ -34,12 +34,6 @@ ENTRY_DISPLAY;
 			</p>
 ENTRY_DISPLAY;
 		}
-		$entry_display .= <<<ADMIN_OPTION
-
-		<p class="admin_link">
-		  <a href="{$_SERVER['PHP_SELF']}?admin=1">Add a New Entry</a>
-		</p>
-ADMIN_OPTION;
 		return $entry_display;
 	}
 	
@@ -77,18 +71,6 @@ ADMIN_FORM;
 		mysql_select_db($this->db) or die("Could not select database. " . mysql_error());
 
 		return $this->buildDBtable();
-	}
-	
-	public function buildDBtable() {
-		$sql = <<<MYSQL_QUERY
-			CREATE TABLE IF NOT EXISTS CMSDB(
-				titel VARCHAR(150),
-				bodytext TEXT,
-				created VARCHAR(100)
-			)
-MYSQL_QUERY;
-		
-		return mysql_query($sql);
 	}
 }	
 ?>

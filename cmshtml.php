@@ -9,19 +9,21 @@
 
   <body>
 	<?php
+		
+		include_once('myCMS.php');
+		include_once('../db_connect.php');
+		$obj = new myCMS();
+		
+		$obj->host = $host;
+		$obj->username = $username;
+		$obj->password = $password;
+		$obj->db = $db;
+		$obj->connect();
 
-	  include_once('myCMS.php');
-	  $obj = new myCMS();
-	  $obj->host = '127.0.0.1';
-	  $obj->username = 'root@localhost';
-	  $obj->password = '';
-	  $obj->db = 'test';
-	  $obj->connect();
+		if ( $_POST )
+			$obj->write($_POST);
 
-	  if ( $_POST )
-		$obj->write($_POST);
-
-	  echo ( $_GET['admin'] == 1 ) ? $obj->display_admin() : $obj->display_public();
+		echo $obj->display_public();
 
 	?>
   </body>
