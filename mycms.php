@@ -1,13 +1,19 @@
 <?php
 //initial idea credited to Jason Lengstorf at http://css-tricks.com/
+//TODO: implement prepared statements and parametrized queries http://stackoverflow.com/questions/60174/how-can-i-prevent-sql-injection-in-php
 class myCMS{
 	var $host;
 	var $username;
 	var $password;
 	var $db;
 	
-	public function display_public(){
-		$q = "SELECT * FROM cmsdb WHERE Type='1' ORDER BY created DESC LIMIT 3";
+	public function display_public($type){
+		if($type=="1"){
+			$q = "SELECT * FROM cmsdb WHERE Type='1' ORDER BY created DESC LIMIT 3";
+		}
+		else{
+			$q = "SELECT * FROM cmsdb WHERE Type='0' ORDER BY created DESC LIMIT 3";
+		}
 		$r = mysql_query($q);
 		$entry_display = "";
 		if ( $r !== false && mysql_num_rows($r) > 0 ) {

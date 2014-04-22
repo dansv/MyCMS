@@ -1,0 +1,56 @@
+body{
+	background: #fff;
+	font-family: 'Open Sans', Sans-Serif;
+}
+.content{
+	background-color:#0A0A0F;
+	position:relative;
+	margin: 5px 0px 0px 5px;
+	height: 1080px;
+}
+.description{
+	margin: 5px 5px 5px 5px;
+
+}
+.description img{
+	margin-top: 5px;
+	width:40px;
+	height:40px;
+}
+.tags{
+	margin: 5px 5px 0px 5px;
+	color: #B2B2CC;
+}
+.mid{
+
+}
+.mid a:link , .mid a:visited{
+	color: #0A0A0F; 
+	font-size: 24pt;
+	text-decoration:none;
+}
+.mid.banner{
+	margin: 5px 5px 0px 5px;
+	background-color:#B2B2CC;
+	text-align:center;
+}
+.mid.banner img{
+	width:128px;
+	height:128px;
+}
+
+#school{
+	display: inline-block;
+	width: 30%;
+	margin-left: 2px;
+}
+#sandbox{
+	display: inline-block;
+	width: 30%;
+	margin-left: 2px;
+}
+#other{
+	display: inline-block;
+	width: 30%;
+	margin-left: 2px;
+}
